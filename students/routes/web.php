@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+use App\Http\Controllers\StudentController;
+Route::get('/students', [StudentController::class, 'index'])->name('students');
+Route::get('/students/create', [StudentController::class, 'create'])->name('products.create');
+Route::get('/students/{student}/edit', [StudentController::class, 'edit']);
+Route::get('/students/{student}', [StudentController::class, 'show']);
+
+// lưu khi submit 1 sinh viên mới
+Route::post('/students', [StudentController::class, 'store']);
+// lưu sau khi sửa
+Route::match(['put', 'patch'], '/students/{student}', [StudentController::class, 'update']);
+// xóa
+Route::delete('/students/{student}', [StudentController::class, 'destroy']);
