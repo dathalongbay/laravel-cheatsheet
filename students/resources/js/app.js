@@ -1,1 +1,3 @@
-import './bootstrap';
+alert("xin chào mix");
+
+alert('xin chào abc');
