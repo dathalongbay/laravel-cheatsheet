@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\API\PostController;
-Route::get('posts', 'PostController@index');
+Route::get('posts', [PostController::class, 'index']);
 
 Route::group(['prefix' => 'post'], function () {
-    Route::post('add', 'PostController@add');
-    Route::get('edit/{id}', 'PostController@edit');
-    Route::post('update/{id}', 'PostController@update');
-    Route::delete('delete/{id}', 'PostController@delete');
+    Route::post('add', [PostController::class, 'add']);
+    Route::get('edit/{id}', [PostController::class, 'edit']);
+    Route::post('update/{id}', [PostController::class, 'update']);
+    Route::delete('delete/{id}', [PostController::class, 'delete']);
 });
